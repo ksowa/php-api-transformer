@@ -155,6 +155,8 @@ final class RecursiveFormatterHelper
      */
     public static function camelCaseToUnderscore($camel, $splitter = '_')
     {
+        return $camel;
+
         $camel = \preg_replace(
             '/(?!^)[[:upper:]][[:lower:]]/',
             '$0',
