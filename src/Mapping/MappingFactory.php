@@ -131,9 +131,10 @@ class MappingFactory
     protected static function getSelfUrl(array &$mappedClass)
     {
         if (empty($mappedClass[static::URLS_KEY][static::SELF_KEY])) {
-            throw new MappingException(
-                'Could not find "self" property under "urls". This is required in order to make the resource to be reachable.'
-            );
+            return null;
+//            throw new MappingException(
+//                'Could not find "self" property under "urls". This is required in order to make the resource to be reachable.'
+//            );
         }
 
         return $mappedClass[static::URLS_KEY][static::SELF_KEY];
@@ -286,6 +287,10 @@ class MappingFactory
      */
     protected static function getOtherUrls(array $mappedClass)
     {
+        if (!isset($mappedClass[static::URLS_KEY]) || !isset($mappedClass[static::URLS_KEY][static::SELF_KEY])) {
+            return [];
+        }
+
         if (!empty($mappedClass[static::URLS_KEY][static::SELF_KEY])) {
             unset($mappedClass[static::URLS_KEY][static::SELF_KEY]);
         }
