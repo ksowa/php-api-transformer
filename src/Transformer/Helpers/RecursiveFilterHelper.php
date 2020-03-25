@@ -24,7 +24,7 @@ final class RecursiveFilterHelper
      */
     public static function deletePropertiesNotInFilter(array &$mappings, array &$array, string $typeKey)
     {
-        if (\array_key_exists(Serializer::CLASS_IDENTIFIER_KEY, $array)) {
+        if (isset($array[Serializer::CLASS_IDENTIFIER_KEY])) {
             $newArray = [];
             $type = $array[Serializer::CLASS_IDENTIFIER_KEY];
 

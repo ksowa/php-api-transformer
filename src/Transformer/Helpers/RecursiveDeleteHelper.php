@@ -39,7 +39,7 @@ final class RecursiveDeleteHelper
     protected static function unsetKeys(array &$array, array &$unwantedKey)
     {
         foreach ($unwantedKey as $key) {
-            if (\array_key_exists($key, $array)) {
+            if (isset($array[$key])) {
                 unset($array[$key]);
             }
         }
@@ -78,7 +78,7 @@ final class RecursiveDeleteHelper
      */
     public static function deleteProperties(array &$mappings, array &$array, string $typeKey)
     {
-        if (\array_key_exists(Serializer::CLASS_IDENTIFIER_KEY, $array)) {
+        if (isset($array[Serializer::CLASS_IDENTIFIER_KEY])) {
             $newArray = [];
 
             self::deleteMatchedClassProperties($mappings, $array, $typeKey, $newArray);
