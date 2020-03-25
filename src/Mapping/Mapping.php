@@ -82,7 +82,7 @@ class Mapping
      */
     public function getIdProperties() : array
     {
-        return (array) $this->idProperties;
+        return $this->idProperties;
     }
 
     /**
