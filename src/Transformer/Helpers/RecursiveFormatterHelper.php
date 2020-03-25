@@ -62,7 +62,7 @@ final class RecursiveFormatterHelper
     {
         $idProperties = [];
 
-        if (\is_scalar($type) && !empty($mappings[$type])) {
+        if ((is_string($type) || is_integer($type) || is_float($type) || is_bool($type)) && !empty($mappings[$type])) {
             $idProperties = $mappings[$type]->getIdProperties();
         }
 
@@ -121,7 +121,7 @@ final class RecursiveFormatterHelper
      */
     private static function arrayToScalarValue(array &$array)
     {
-        if (\array_key_exists(Serializer::SCALAR_VALUE, $array)) {
+        if (isset($array[Serializer::SCALAR_VALUE])) {
             $array = $array[Serializer::SCALAR_VALUE];
         }
 

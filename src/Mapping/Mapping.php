@@ -80,7 +80,7 @@ class Mapping
      */
     public function getIdProperties()
     {
-        return (array) $this->idProperties;
+        return $this->idProperties;
     }
 
     /**
